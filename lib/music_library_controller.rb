@@ -1,3 +1,4 @@
+require "pry"
 class MusicLibraryController
   def initialize(path="./db/mp3s")
     @path = path
@@ -74,6 +75,7 @@ class MusicLibraryController
     puts "Which song number would you like to play?"
     num = gets
     num = num.to_i + 1
+    binding.pry
     song = Song.all.sort {|a,b| a.name <=> b.name}[num]
     puts "Playing #{song.name} by #{song.artist.name}" if song
   end
