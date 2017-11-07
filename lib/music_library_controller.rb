@@ -38,22 +38,22 @@ class MusicLibraryController
     end
   end
 
-  def list_songs
-    i=0
+  def list_songs #Lists numbered and alphabetized by song name
+    i = 0
     Song.all.sort {|a,b| a.name <=> b.name}.each {|s| i+=1; puts "#{i}. #{s.artist.name} - #{s.name} - #{s.genre.name}"}
   end
 
-  def list_artists
-    i=0
+  def list_artists #Lists numbered and alphabetized by song name
+    i = 0
     Artist.all.sort {|a,b| a.name <=> b.name}.each {|s| i+=1; puts "#{i}. #{s.name}"}
   end
 
-  def list_genres
-    i=0
+  def list_genres #Lists numbered and alphabetized by song name
+    i = 0
     Genre.all.sort {|a,b| a.name <=> b.name}.each {|s| i+=1; puts "#{i}. #{s.name}"}
   end
 
-  def list_songs_by_artist
+  def list_songs_by_artist #Lists numbered and alphabetized by song name
     i = 0
     puts "Please enter the name of an artist:"
     artist_name = gets
@@ -62,7 +62,7 @@ class MusicLibraryController
     end
   end
 
-  def list_songs_by_genre
+  def list_songs_by_genre #Lists numbered and alphabetized by song name
     i = 0
     puts "Please enter the name of a genre:"
     genre_name = gets
@@ -73,8 +73,7 @@ class MusicLibraryController
 
   def play_song
     puts "Which song number would you like to play?"
-    num = gets.to_i - 1
-#    binding.pry
+    num = gets.to_i - 1   #Converts user input into Song.all index for song.
     song = Song.all.sort {|a,b| a.name <=> b.name}[num]
     puts "Playing #{song.name} by #{song.artist.name}" if num < Song.all.length && num >= 0
   end
