@@ -76,6 +76,6 @@ class MusicLibraryController
     num = gets.to_i - 1
 #    binding.pry
     song = Song.all.sort {|a,b| a.name <=> b.name}[num]
-    puts "Playing #{song.name} by #{song.artist.name}" if num < Song.all.length
+    puts "Playing #{song.name} by #{song.artist.name}" if num < Song.all.length && num >= 0
   end
 end
